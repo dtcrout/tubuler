@@ -1,0 +1,51 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="css/bulma.css">
+        <title>tubuler</title>
+    </head>
+    <body>
+        <section class="section">
+            <form>
+                <div class="field is-size-1 has-text-centered">
+                    <strong>tubuler</strong> 🤙
+                </div>
+                <div class="field">
+                    <div class="control">
+                      <input class="input" type="text" id="url" autofocus placeholder="https://www.youtube.com/watch?v=stgrSjynPKs">
+                    </div>
+                  </div>
+                  <div class="field">
+                    <div class="control has-text-centered">
+                      <input class="button is-primary" type="submit" value="Download">
+                    </div>
+                  </div>
+            </form>
+        </section>
+        <footer>
+            <div class="content has-text-centered">
+                <p>
+                    <strong>tubuler</strong> is free and open source.
+                </p>
+            </div>
+        </footer>
+
+        <script>
+            // We can probably wrap this up into a separate file
+            const electron = require('electron');
+            const { ipcRenderer } = electron;
+            
+            const form = document.querySelector('form');
+            form.addEventListener('submit', submitForm);
+            
+            function submitForm(event) {
+                event.preventDefault();
+                const url = document.querySelector('#url').value;
+                ipcRenderer.send('url', url);
+                
+                // Reset form and refocus on field
+                form.reset();
+                document.getElementById("url").focus();
+            }
+        </script>
+    </body>
+</html>

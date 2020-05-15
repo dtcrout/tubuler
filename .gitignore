@@ -1,0 +1,15 @@
+# Directories
+css/
+lib/
+node_modules/
+tubuler-darwin-x64/
+venv/
+
+# Files
+package-lock.json
+src/download_video/__pycache__
+
+# Mac files
+.DS_Store
+*/.DS_Store
+*/*/.DS_Store

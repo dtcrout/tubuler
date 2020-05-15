@@ -1,0 +1,28 @@
+{
+    "name": "tubuler",
+    "version": "0.1.0",
+    "description": "A simple front-end for youtube-dl.",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/dtcrout/tubuler.git"
+    },
+    "main": "lib/main.js",
+    "scripts": {
+        "babel": "babel src -d lib",
+        "clean": "scripts/clean.sh",
+        "deps": "scripts/make_python_env.sh",
+        "start": "npm run babel && cp -r src/download_video lib/download_video && electron ."
+    },
+    "author": "Darshan Crout",
+    "license": "MIT",
+    "devDependencies": {
+        "@babel/cli": "^7.8.4",
+        "@babel/core": "^7.9.6",
+        "@babel/preset-env": "^7.9.6",
+        "electron": "^8.2.5"
+    },
+    "dependencies": {
+        "bulma": "^0.8.2",
+        "electron-packager": "^14.2.1"
+    }
+}

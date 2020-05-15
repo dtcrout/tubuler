@@ -1,0 +1,11 @@
+altgraph==0.17
+certifi==2020.4.5.1
+click==7.1.2
+Flask==1.1.2
+itsdangerous==1.1.0
+Jinja2==2.11.2
+macholib==1.14
+MarkupSafe==1.1.1
+PyInstaller==3.6
+Werkzeug==1.0.1
+youtube-dl==2020.5.3
