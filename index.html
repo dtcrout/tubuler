@@ -4,7 +4,7 @@
         <title>tubuler</title>
     </head>
     <body>
-        <section class="section">
+        <section class="section section-padding">
             <form>
                 <div class="field is-size-1 has-text-centered">
                     <strong>tubuler</strong> 🤙
@@ -19,9 +19,14 @@
                       <input class="button is-primary" type="submit" value="Download">
                     </div>
                   </div>
+                  <div class="field">
+                    <div class="box has-text-centered is-size-6" style="padding: 0; box-shadow: none;" id="log">
+                        &nbsp;
+                    </div>
+                  </div>
             </form>
         </section>
-        <footer>
+        <footer style="padding: 0;">
             <div class="content has-text-centered">
                 <p>
                     <strong>tubuler</strong> is free and open source.
@@ -45,6 +50,12 @@
                 // Reset form and refocus on field
                 form.reset();
                 document.getElementById("url").focus();
+            }
+
+            ipcRenderer.on('log', printLog);
+
+            function printLog(event, message) {
+                document.getElementById('log').innerHTML = message;
             }
         </script>
     </body>
