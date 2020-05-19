@@ -4,7 +4,7 @@
   <img src="resources/images/tubuler.png" width="600">
 </p>
 
-## What is tubuler?
+## What Is tubuler?
 
 tubuler is a free and open source application for downloading YouTube videos, based on the [youtube-dl](http://ytdl-org.github.io/youtube-dl/) command line tool. The application is built on [Electron](https://www.electronjs.org/) with front-end components provided by [Bulma](https://bulma.io/). Under the hood is a [Flask](https://flask.palletsprojects.com/en/1.1.x/) back-end with youtube-dl.
 
