@@ -1,6 +1,6 @@
 {
     "name": "tubuler",
-    "version": "0.1.0",
+    "version": "1.0.0",
     "description": "A simple front-end for youtube-dl.",
     "repository": {
         "type": "git",
@@ -9,9 +9,10 @@
     "main": "lib/main.js",
     "scripts": {
         "babel": "babel src -d lib",
+        "build": "scripts/build.sh",
         "clean": "scripts/clean.sh",
         "deps": "scripts/make_python_env.sh",
-        "start": "npm run babel && cp -r src/download_video lib/download_video && electron ."
+        "start": "npm run babel && cp -r src/download_video lib/ && electron ."
     },
     "author": "Darshan Crout",
     "license": "MIT",

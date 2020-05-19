@@ -1,4 +1,6 @@
-rm -rf css \
+rm -rf app.spec \
+       build \
+       css \
        lib \
        node_modules \
        package-lock.json \
