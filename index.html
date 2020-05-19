@@ -29,7 +29,7 @@
         <footer style="padding: 0;">
             <div class="content has-text-centered" style="-webkit-app-region: no-drag;">
                 <p>
-                    <strong>tubuler</strong> is free and open source.
+                    <a href="https://github.com/dtcrout/tubuler/"><strong>tubuler</strong> is free and open source!</a>
                 </p>
             </div>
         </footer>
@@ -37,7 +37,7 @@
         <script>
             // We can probably wrap this up into a separate file
             const electron = require('electron');
-            const { ipcRenderer } = electron;
+            const { ipcRenderer, shell } = electron;
             
             const form = document.querySelector('form');
             form.addEventListener('submit', submitForm);
@@ -56,6 +56,15 @@
 
             function printLog(event, message) {
                 document.getElementById('log').innerHTML = message;
+            }
+
+            document.addEventListener('click', redirectLink);
+
+            function redirectLink(event) {
+                if (event.target.tagName === 'A' && event.target.href.startsWith('http')) {
+                    event.preventDefault();
+                    shell.openExternal(event.target.href);
+                }
             }
         </script>
     </body>
