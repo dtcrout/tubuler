@@ -43,6 +43,7 @@ ipcMain.on('url', (event, url) => {
                     event.sender.send('log', '⏳ Downloading video...')
 
                     const filePath = `${result.filePaths[0]}/%(title)s.%(ext)s`
+
                     const payload = JSON.stringify(
                         {
                             "url": url,
