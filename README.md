@@ -18,7 +18,9 @@ Using tubuler is easy: simply paste the YouTube video link into the app and clic
 
 ## Releases
 
-tubuler is available for MacOS (*download coming soon*). Builds for Windows and Linux may be available in the future. You can also download this repo and build tubuler for your platform of choice (see [Building tubuler](#Building-tubuler)).
+Releases can be found [here](https://github.com/dtcrout/tubuler/releases).
+
+tubuler is available for MacOS. Builds for Windows and Linux may be available in the future. You can also download this repo and build tubuler for your platform of choice (see [Building tubuler](#Building-tubuler)).
 
 ## Development
 
