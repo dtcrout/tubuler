@@ -17,6 +17,8 @@ function createWindow() {
     const mainWindow = new BrowserWindow({
         width: 600,
         height: 375,
+        frame: false,
+        titleBarStyle: 'hiddenInset',
         webPreferences: {
             nodeIntegration: true
         }
