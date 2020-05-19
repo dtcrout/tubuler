@@ -3,7 +3,7 @@
         <link rel="stylesheet" type="text/css" href="css/bulma.css">
         <title>tubuler</title>
     </head>
-    <body>
+    <body style="-webkit-app-region: drag">
         <section class="section section-padding">
             <form>
                 <div class="field is-size-1 has-text-centered">
@@ -11,23 +11,23 @@
                 </div>
                 <div class="field">
                     <div class="control">
-                      <input class="input" type="text" id="url" autofocus placeholder="https://www.youtube.com/watch?v=stgrSjynPKs">
+                      <input class="input" style="-webkit-app-region: no-drag;" type="text" id="url" autofocus placeholder="https://www.youtube.com/watch?v=stgrSjynPKs">
                     </div>
                   </div>
                   <div class="field">
                     <div class="control has-text-centered">
-                      <input class="button is-primary" type="submit" value="Download">
+                      <input class="button is-primary" style="-webkit-app-region: no-drag;" type="submit" value="Download">
                     </div>
                   </div>
                   <div class="field">
-                    <div class="box has-text-centered is-size-6" style="padding: 0; box-shadow: none;" id="log">
+                    <div class="box has-text-centered is-size-6" style="padding: 0; box-shadow: none; -webkit-app-region: no-drag;" id="log">
                         &nbsp;
                     </div>
                   </div>
             </form>
         </section>
         <footer style="padding: 0;">
-            <div class="content has-text-centered">
+            <div class="content has-text-centered" style="-webkit-app-region: no-drag;">
                 <p>
                     <strong>tubuler</strong> is free and open source.
                 </p>
