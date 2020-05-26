@@ -16,11 +16,11 @@ Pronouncing *tubuler* is similar to *tubular*, a term which was used by surfers 
 
 Using tubuler is easy: simply paste the YouTube video link into the app and click download. tubuler automatically chooses the best video and audio quality. The download time varies depending on the length of the video and its quality at which it was uploaded. tubuler can also work on other [video streaming sites](https://ytdl-org.github.io/youtube-dl/supportedsites.html).
 
-## Releases
+## Getting tubuler
 
-Releases can be found [here](https://github.com/dtcrout/tubuler/releases).
+[Download tubuler for macOS](https://github.com/dtcrout/tubuler/releases/download/v1.0.0/tubuler.zip)
 
-tubuler is available for MacOS. Builds for Windows and Linux may be available in the future. You can also download this repo and build tubuler for your platform of choice (see [Building tubuler](#Building-tubuler)).
+tubuler is currently available for macOS. Builds for Windows and Linux may be available in the near future. You can also download this repo and build tubuler for your platform of choice (see [Building tubuler](#Building-tubuler)).
 
 ## Development
 
@@ -46,13 +46,20 @@ To get a development environment up and running, clone this repo and run the fol
 
 ### How It Works
 
-tubuler is split into two different parts: the Electron front-end and the Flask back-end. Running the app starts the Flask app in the background. When the user submits a URL, a REST call is made to the back-end which downloads the video to the user's selected location.
+tubuler is split into two different parts: the Electron front-end and the Flask back-end. Running the app starts the Flask app in the background. When the user submits a URL, a POST request is made to the back-end which triggers the video download to the user's selected location.
 
-The front-end is developed in JavaScript [ES6](https://en.wikipedia.org/wiki/ECMAScript) to standardize development. The code which is developed on and the code which is used by Electron are separated into different directories. Development is done in `src/` and then transcribed into another directory `lib/` using [Babel](https://babeljs.io/). Looking into `package.json` can give more clarity into the development workflow.
+#### Front-end
 
-The back-end is developed in Python using [PEP-8](https://www.python.org/dev/peps/pep-0008/) formatting. `npm run deps` creates a virtual environment `venv/` where all Python dependencies are contained. All Python source files are in the `src/download_video/` directory.
+The front-end code is split into two directories:
 
-The Flask app can be ran independently by running the following command in the root of the tubuler:
+* `src/`: Development source files (all development happens here)
+* `lib/`: Source code used by Electron
+
+JS development adheres to [ES6](https://en.wikipedia.org/wiki/ECMAScript) to standardize development. When running or building tubuler, [Babel](https://babeljs.io/) is ran first to transcribe the files in `src/` to the files in `lib/`. Looking into `package.json` can give more clarity into the development workflow.
+
+#### Back-end
+
+All Python source files are in the `src/download_video/` directory. The Flask app can be ran independently by running the following command in the root of the tubuler:
 
 ```
 $ ./venv/bin/python src/download_video/app.py
@@ -66,9 +73,13 @@ $ curl -X POST -H "Content-type: application/json" \
                -d '{"url": "[youtube_video_url]", "ydl_opts": {"outtmpl": "[path]/video.mp4"}}' "localhost:5000/download_video"
 ```
 
+where `[youtube_video_url]` is the link to the video you wish to download and `[path]` is a directory on your machine where you want to save the video.
+
+Before running the Flask app by itself, we need to create a Python virtual environment first by running `npm run deps`.  This creates a virtual environment `venv/` where all Python dependencies are contained. The back-end is developed in Python using [PEP-8](https://www.python.org/dev/peps/pep-0008/) formatting.
+
 ### Building tubuler
 
-The Flask app needs to be made into an executable before packaging tubuler. In `src/pythonProcess.js`, we need to comment/uncomment lines so we use the exectuable instead of the Python code. The beginning of `createPythonProcess()` should look like this:
+To build tubuler, the Flask app needs to be made into an executable. To start, we need to comment/uncomment lines so we use the executable instead of the Python code. In `src/pythonProcess.js`, the beginning of `createPythonProcess()` should look like the following:
 
 ```
 // Run app using Python
@@ -80,7 +91,11 @@ const script = path.join(__dirname, 'download_video_dist', 'app', 'app');
 pyProcess = execFile(script);
 ```
 
-The app can then be built by running `npm run build`. This will create a directory containing the standalone tubuler app.
+Once that's done, we can build the app by running `npm run build`. This will create a directory containing the standalone tubuler app.
+
+## Feedback
+
+If you have any ideas on how to make tubuler better or if you're having issues, feel free to contribute [here](https://github.com/dtcrout/tubuler/issues).
 
 ## Stack
 
@@ -88,8 +103,11 @@ The app can then be built by running `npm run build`. This will create a directo
 * [Bulma](https://bulma.io/)
 * [Electron](https://www.electronjs.org/)
 * [Flask](https://flask.palletsprojects.com/en/1.1.x/)
+* [PyInstaller](https://www.pyinstaller.org/)
 * [youtube-dl](http://ytdl-org.github.io/youtube-dl/)
 
 ## License
 
 [MIT](LICENSE)
+
+tubuler is free and open source.
